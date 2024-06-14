@@ -1,12 +1,29 @@
 
 <?php
-  require 'config/config.php';
-  require 'config/database.php';
-  $db = new Database();
+
+    require 'config/config.php';
+    require 'config/database.php';
+    $db = new Database();
+    $con = $db->conectar();
 
 
-  //session_destroy();
+    $errors=[];
+    if(!empty($_POST)){
+        $nombres = trim($_POST['nombres']);
+        $apellidos = trim($_POST['apellidos']);
+        $email = trim($_POST['email']);
+        $telefono = trim($_POST['telefono']);
+        $identificacion = trim($_POST['identificacion']);
+        $usuario = trim($_POST['usuario']);
+        $password = trim($_POST['password']);
+        $repassword = trim($_POST['repassword']);  
 
+  }
+
+
+  //s{sion_destroy();
+
+  session_destroy();
   print_r($_SESSION);
 ?>
 
@@ -119,9 +136,6 @@
 
         </div>
     </main>
-
-
-  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   

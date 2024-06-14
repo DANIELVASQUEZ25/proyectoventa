@@ -8,7 +8,7 @@
   $sql->execute();
   $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-  //session_destroy();
+  session_destroy();
 
   print_r($_SESSION);
 ?>
@@ -47,12 +47,15 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li class="nav-item">
-              <a href="#" class="nav-link active">Catálogo</a>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">Contacto</a>
+              </li>
+
+              <!-- <a href="#" class="nav-link active">Catálogo</a> -->
+                <a class="nav-link active" href="https://poe.com/DaniBytesIA" target="_blank" style="text-decoration: none; color: white;"><strong style="align-items:center;">Asistente Virtual </strong><img src="img/asistentevirtual.jpeg" alt="" class="img-fluid" style="width: 30px; height: 30px;"></a>
             </li>
             
-            <li class="nav-item">
-              <a href="#" class="nav-link">Contacto</a>
-            </li>
 
           </ul>
           <a href="checkout.php" class="btn btn-primary">Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart; ?></span></a>
