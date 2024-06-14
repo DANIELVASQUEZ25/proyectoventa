@@ -174,11 +174,15 @@
                 <!-- Finaliza PHP -->
 
                 <p class="lead"><?php echo $descripcion; ?></p>
+
+                <div class="col-3 my-3">
+                  <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="10" value="1">
+                </div>
                 
                 <!-- Botones de Comprar Ahora y agregar al carrito -->
                 <div class="d-grid gap-3 col-10 mx-auto">
                     <button class="btn btn-primary" type="button">Comprar Ahora</button>
-                    <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp; ?>')">Agregar al Carrito</button>
+                    <button id="btnAgregar" class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>, cantidad.value, '<?php echo $token_tmp; ?>')">Agregar al Carrito</button>
                 </div>
 
             </div>
@@ -189,10 +193,16 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
-    function addProducto(id, token){
+
+    // let btnAgregar = document.getElementById('btnAgregar');
+    // let inputCantidad = document.getElementById('cantidad').value   
+    // btnAgregar.onclick =addProducto(<?php echo $id; ?>, inputCantidad, '<?php echo $token_tmp; ?>');
+
+    function addProducto(id, cantidad, token){
       let url = "clases/carrito.php";
       let formData = new FormData();
       formData.append("id", id);
+      formData.append("cantidad", cantidad);
       formData.append("token", token);
 
       fetch(url, {

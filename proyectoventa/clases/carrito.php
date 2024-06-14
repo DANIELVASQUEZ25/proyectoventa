@@ -3,16 +3,18 @@
 
     if(isset($_POST["id"])){
         $id = $_POST["id"];
+        $cantidad = isset($_POST['cantidad']) ?  $_POST['cantidad'] : 1;
+
         $token = $_POST["token"];
 
         $token_tmp = hash_hmac('sha256', $id, KEY_TOKEN);
 
-        if($token == $token_tmp){
+        if($token == $token_tmp && $cantidad > 0 && is_numeric($cantidad)){
             
             if(isset($_SESSION['carrito'] ['producto'] [$id])){
-                $_SESSION['carrito'] ['producto'] [$id] += 1;
+                $_SESSION['carrito'] ['producto'] [$id] += $cantidad;
             }else{
-                $_SESSION['carrito'] ['producto'] [$id] = 1;
+                $_SESSION['carrito'] ['producto'] [$id] = $cantidad;
             }
 
             $datos['numero'] = count($_SESSION['carrito'] ['producto']);
